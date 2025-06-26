@@ -19,7 +19,7 @@ $departments=get_departements();
         $managers=get_managers($dp['dept_no']);
         ?>
       <tr>
-         <td><a href="salaries.php?dept_no=<?=$dp['dept_no']?>"><?=$dp['dept_name']?></a></td>
+         <td><a href="employes.php?dept_no=<?=$dp['dept_no']?>"><?=$dp['dept_name']?></a></td>
       </tr>
       <?php foreach($managers as $mg){ ?>
         <tr>
