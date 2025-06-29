@@ -5,29 +5,40 @@ $departments=get_departements();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Départements & Managers</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
 </head>
-<body>
-  <table border="1">
-      <?php 
-      foreach($departments as $dp)
-      { 
-        $managers=get_managers($dp['dept_no']);
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Liste des Départements et Managers</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped align-middle">
+        <?php 
+        foreach($departments as $dp)
+        { 
+          $managers=get_managers($dp['dept_no']);
         ?>
-      <tr>
-         <td><a href="employes.php?dept_no=<?=$dp['dept_no']?>"><?=$dp['dept_name']?></a></td>
-      </tr>
-      <?php foreach($managers as $mg){ ?>
-        <tr>
-            <td><?=$mg['first_name']?></td>
-            <td><?=$mg['last_name']?></td>
+        <tr class="table-primary">
+          <td colspan="2">
+            <a href="employes.php?dept_no=<?=$dp['dept_no']?>" class="fw-bold text-decoration-none text-dark">
+              <?=$dp['dept_name']?>
+            </a>
+          </td>
         </tr>
-         <?php } ?>
-      <?php } ?>
-    </table>
+        <?php foreach($managers as $mg){ ?>
+          <tr>
+            <td class="ps-4"><?=$mg['first_name']?></td>
+            <td><?=$mg['last_name']?></td>
+          </tr>
+        <?php } ?>
+        <?php } ?>
+      </table>
+    </div>
+  </div>
+
 </body>
 </html>

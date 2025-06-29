@@ -27,7 +27,10 @@ $departement = get_dept_name($_GET['dept_no']);
         <?php foreach ($employes as $emp){?>
             <tr>
                 <td><?= htmlspecialchars($emp['first_name']) ?></td>
-                <td><?= htmlspecialchars($emp['last_name']) ?></td>
+                <td class="d-flex justify-content-between">
+                  <?= htmlspecialchars($emp['last_name']) ?>
+                 <a class="link-opacity-25-hover" href="fiche.php?emp_no=<?=$emp['emp_no']?>">Voir fiche</a>
+              </td>
             </tr>
         <?php } ?>
         </tbody>
