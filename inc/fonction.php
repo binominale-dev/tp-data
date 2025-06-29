@@ -34,4 +34,12 @@ function get_employes($dept_no){
    }
    return $arr;
 }
+function get_dept_name($dept_no){
+     $req="SELECT dept_name from departments where dept_no = '%s' ";
+     $req=sprintf($req,$dept_no);
+     $env=mysqli_query(db_connect(),$req);
+     $res=mysqli_fetch_assoc($env);
+     $arr=$res;
+     return $arr;
+}
 ?>

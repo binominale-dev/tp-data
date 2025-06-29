@@ -1,25 +1,37 @@
 <?php 
 require("../inc/fonction.php");
-$employes=get_employes($_GET['dept_no']);
+$employes = get_employes($_GET['dept_no']);
+$departement = get_dept_name($_GET['dept_no']);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste des Employés</title>
+     <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
+
 </head>
 <body>
-<table border="1">
-      <?php 
-      foreach($employes as $emp)
-      { ?>
-        <tr>
-            <td><?=$emp['first_name']?></td>
-            <td><?=$emp['last_name']?></td>
-        </tr>
-      <?php } ?>
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Liste des employés du département <?=$departement['dept_name']?></h2>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($employes as $emp){?>
+            <tr>
+                <td><?= htmlspecialchars($emp['first_name']) ?></td>
+                <td><?= htmlspecialchars($emp['last_name']) ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
     </table>
+</div>
 </body>
 </html>
