@@ -15,10 +15,14 @@ AS SELECT
     e.hire_date,
     e.gender,
     t.title,
+    departments.dept_name,
     MIN(t.from_date) AS from_date,
     MAX(t.to_date) AS to_date,
     MAX(s.salary) AS salaire_max
-FROM employees e
+
+FROM departments
+JOIN dept_emp ON departments.dept_no = dept_emp.dept_no
+JOIN employees e ON dept_emp.emp_no = e.emp_no
 JOIN titles t ON e.emp_no = t.emp_no
 JOIN salaries s ON s.emp_no = e.emp_no
 AND s.from_date BETWEEN t.from_date AND t.to_date

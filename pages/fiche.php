@@ -64,6 +64,11 @@ $fiches = get_fiche($_GET['emp_no']);
         </div>
         <div class="row mb-2">
             <div class="col-md-6"><strong>Date d'embauche :</strong> <?= htmlspecialchars($first['hire_date']) ?></div>
+            <div class="col-md-6"><strong>Departement :</strong> <?= htmlspecialchars($first['dept_name']) ?></div>
+        </div>  
+        <div class="row mb-2">
+            <div class="col-md-6"><strong>Poste actuel :</strong> <?= htmlspecialchars($first['title']) ?></div>
+            <div class="col-md-6"><strong>Salaire :</strong> <?= htmlspecialchars($first['salaire_max']) ?> €</div>
         </div>
     </div>
 
@@ -80,7 +85,8 @@ $fiches = get_fiche($_GET['emp_no']);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($fiches as $f) { ?>
+                    <?php foreach ($fiches as $key=>$f) { 
+                       if($key == 0)continue;?>
                         <tr>
                             <td><?= htmlspecialchars($f['title']) ?></td>
                             <td><?= htmlspecialchars($f['from_date']) ?></td>
