@@ -4,7 +4,8 @@ AS SELECT max(dept_manager.to_date),employees.first_name,employees.last_name,dep
 
 CREATE OR REPLACE VIEW v_employees_pardepartement 
 AS SELECT employees.first_name,employees.last_name,employees.emp_no,departments.dept_no from departments 
-   join dept_emp on departments.dept_no = dept_emp.dept_no join employees on dept_emp.emp_no = employees.emp_no;
+   join dept_emp on departments.dept_no = dept_emp.dept_no join employees on dept_emp.emp_no = employees.emp_no
+   ORDER BY employees.first_name ASC;
 
 CREATE OR REPLACE VIEW v_fiche_employe 
 AS SELECT 
