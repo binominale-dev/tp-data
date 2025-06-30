@@ -60,10 +60,15 @@ $departments=get_departements();
     <h2 class="text-center mb-4">Liste des Départements et Managers</h2>
     <div class="table-responsive">
       <table class="table table-bordered table-striped align-middle">
+        <tr>
+          <th>Departement</th>
+          <th></th>
+          <th>Current Manager</th>
+        </tr>
         <?php 
-        foreach($departments as $dp)
-        { 
+        foreach($departments as $dp){ 
           $managers=get_managers($dp['dept_no']);
+          foreach($managers as $mg){
         ?>
         <tr class="table-primary">
           <td colspan="2">
@@ -71,11 +76,7 @@ $departments=get_departements();
               <?=$dp['dept_name']?>
             </a>
           </td>
-        </tr>
-        <?php foreach($managers as $mg){ ?>
-          <tr>
-            <td class="ps-4"><?=$mg['first_name']?></td>
-            <td><?=$mg['last_name']?></td>
+            <td class="ps-4"><?=$mg['first_name']?> <?=$mg['last_name']?></td>
           </tr>
         <?php } ?>
         <?php } ?>
