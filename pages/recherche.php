@@ -54,14 +54,14 @@ $departements = get_departements();?>
 
 
   <div class="container mt-5">
-    <form action="traitement_recherche.php" method="get">
+    <form action="resultat_recherche.php" method="get">
       <h1 class="mb-4">Recherche des employés</h1>
 
  
       <div class="mb-3">
         <label for="departement" class="form-label">Département</label>
         <select class="form-select" name="departement" id="departement">
-          <option value="">Tous</option>
+          <option value="d00">Tous</option>
           <?php foreach($departements as $dp){ ?>
           <option value="<?=$dp['dept_no']?>"><?=$dp['dept_name']?></option>
          <?php } ?>
