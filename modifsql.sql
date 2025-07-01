@@ -17,6 +17,7 @@ AS SELECT
     e.gender,
     t.title,
     departments.dept_name,
+    departments.dept_no,
     MIN(t.from_date) AS from_date,
     MAX(t.to_date) AS to_date,
     MAX(s.salary) AS salaire_max
@@ -29,5 +30,10 @@ JOIN salaries s ON s.emp_no = e.emp_no
 AND s.from_date BETWEEN t.from_date AND t.to_date
  GROUP BY t.title, e.emp_no, e.first_name,e.last_name;
 
+CREATE OR REPLACE VIEW v_employe 
+AS SELECT employees.first_name,employees.last_name,employees.emp_no,departments.dept_no,employees.birth_date ,departments.dept_name,titles.title from departments 
+join dept_emp on departments.dept_no = dept_emp.dept_no join employees on dept_emp.emp_no = employees.emp_no 
+join titles on titles.emp_no = employees.emp_no
+order by employees.first_name ASC;
 
 
