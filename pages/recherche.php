@@ -32,18 +32,24 @@ $departements = get_departements(); ?>
           <li class="nav-item">
             <a class="nav-link" href="recherche.php">Search</a>
           </li>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
+            
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Departement
+          </a>
+          <ul class="dropdown-menu">
+            <?php foreach($departments as $dp) {?>
+              <li><a class="dropdown-item" href="employes.php?dept_no=<?=$dp['dept_no']?>">
+              <?=$dp['dept_name']?>
+            </a></li>
+            <?php } ?>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">See all</a></li>
+          </ul>
+        </li>
+
+           
           <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
           </li>
