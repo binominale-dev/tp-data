@@ -37,3 +37,12 @@ join titles on titles.emp_no = employees.emp_no
 order by employees.first_name ASC;
 
 
+SELECT * from v_employe WHERE 1=1
+         AND (dept_no like 'd%'
+         OR dept_no like 'd%')
+         AND (first_name like 'Alex%'
+         OR last_name like 'Alex%'
+         OR first_name like 'Alex%'
+         OR last_name like 'Alex%'
+         OR CONCAT(first_name, ' ', last_name) LIKE 'Alex%')
+         AND TIMESTAMPDIFF(YEAR,birth_date,NOW()) between 30 and 70 limit 20, 20;

@@ -1,13 +1,15 @@
 <?php 
 require("../inc/fonction.php");
-if(empty($_GET['agemin']))$agemin = 0;
-if(empty($_GET['agemax']))$agemax = 110;
-else if(!empty($_GET['agemin']) || !empty($_GET['agemax'])){
-    $agemin = $_GET['agemin'];
-    $agemax = $_GET['agemax'];
-}
-$resultats = recherche($_GET['departement'],$_GET['nom'],$agemin,$agemax);
+
+    $agemin = $_SESSION['agemin'];
+    $agemax = $_SESSION['agemax'];
+    $departement = $_SESSION['departement'];
+    $nom = $_SESSION['nom'];
+
+$i = $_GET['page'];
+$resultats = recherche($departement,$nom,$agemin,$agemax,$i);
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,6 +19,47 @@ $resultats = recherche($_GET['departement'],$_GET['nom'],$agemin,$agemax);
     <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">EMPLOYES</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="recherche.php">Search</a>
+          </li>
+
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Departement
+          </a>
+          <ul class="dropdown-menu">
+            <?php foreach($departments as $dp) {?>
+              <li><a class="dropdown-item" href="employes.php?dept_no=<?=$dp['dept_no']?>">
+              <?=$dp['dept_name']?>
+            </a></li>
+            <?php } ?>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">See all</a></li>
+          </ul>
+        </li>
+
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
 
 <div class="container my-5">
     <h2 class="text-center mb-4">Résultats de la recherche</h2>
@@ -50,5 +93,11 @@ $resultats = recherche($_GET['departement'],$_GET['nom'],$agemin,$agemax);
 
 </div>
 
+<?php if ($i == 0) {?>
+  <a href="traitement_recherche.php?page=<?= 1; ?>">Suivant</a>
+<?php } else { ?>
+  <a href="traitement_recherche.php?page=<?= $i-1; ?>">Precedent</a>
+  <a href="traitement_recherche.php?page=<?= $i+1; ?>">Suivant</a>
+<?php }?>
 </body>
 </html>
