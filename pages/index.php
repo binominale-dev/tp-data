@@ -1,9 +1,10 @@
 <?php
 require("../inc/fonction.php");
-$departments=get_departements();
+$departments = get_departements();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@ $departments=get_departements();
   <title>Départements & Managers</title>
   <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
 </head>
+
 <body class="bg-light">
   
   
@@ -53,9 +55,9 @@ $departments=get_departements();
         </li>
       </ul>
       
+
     </div>
-  </div>
-</nav>
+  </nav>
 
 
 
@@ -69,24 +71,25 @@ $departments=get_departements();
           <th></th>
           <th>Current Manager</th>
         </tr>
-        <?php 
-        foreach($departments as $dp){ 
-          $managers=get_managers($dp['dept_no']);
-          foreach($managers as $mg){
+        <?php
+        foreach ($departments as $dp) {
+          $managers = get_managers($dp['dept_no']);
+          foreach ($managers as $mg) {
         ?>
-        <tr class="table-primary">
-          <td colspan="2">
-            <a href="employes.php?dept_no=<?=$dp['dept_no']?>" class="fw-bold text-decoration-none text-dark">
-              <?=$dp['dept_name']?>
-            </a>
-          </td>
-            <td class="ps-4"><?=$mg['first_name']?> <?=$mg['last_name']?></td>
-          </tr>
-        <?php } ?>
+            <tr class="table-primary">
+              <td colspan="2">
+                <a href="employes.php?dept_no=<?= $dp['dept_no'] ?>" class="fw-bold text-decoration-none text-dark">
+                  <?= $dp['dept_name'] ?>
+                </a>
+              </td>
+              <td class="ps-4"><?= $mg['first_name'] ?> <?= $mg['last_name'] ?></td>
+            </tr>
+          <?php } ?>
         <?php } ?>
       </table>
     </div>
   </div>
 
 </body>
+
 </html>

@@ -1,8 +1,9 @@
-<?php 
+<?php
 require("../inc/fonction.php");
-$departements = get_departements();?>
+$departements = get_departements(); ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,6 +11,7 @@ $departements = get_departements();?>
   <title>Liste des Employés</title>
   <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css" />
 </head>
+
 <body>
   <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -32,6 +34,7 @@ $departements = get_departements();?>
           </li>
 
           <li class="nav-item dropdown">
+            
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Departement
           </a>
@@ -46,11 +49,12 @@ $departements = get_departements();?>
           </ul>
         </li>
 
+           
           <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        
+
       </div>
     </div>
   </nav>
@@ -60,18 +64,18 @@ $departements = get_departements();?>
     <form action="resultat_recherche.php" method="get">
       <h1 class="mb-4">Recherche des employés</h1>
 
- 
+
       <div class="mb-3">
         <label for="departement" class="form-label">Département</label>
         <select class="form-select" name="departement" id="departement">
           <option value="d00">Tous</option>
-          <?php foreach($departements as $dp){ ?>
-          <option value="<?=$dp['dept_no']?>"><?=$dp['dept_name']?></option>
-         <?php } ?>
+          <?php foreach ($departements as $dp) { ?>
+            <option value="<?= $dp['dept_no'] ?>"><?= $dp['dept_name'] ?></option>
+          <?php } ?>
         </select>
       </div>
 
-     
+
       <div class="mb-3">
         <label for="nom" class="form-label">Nom de l'employé</label>
         <input type="search" class="form-control" name="nom" id="nom" placeholder="Entrez le nom de l'employé" />
@@ -95,4 +99,5 @@ $departements = get_departements();?>
     </form>
   </div>
 </body>
+
 </html>

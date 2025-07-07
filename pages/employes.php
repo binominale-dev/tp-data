@@ -11,7 +11,7 @@ $departement = get_dept_name($_GET['dept_no']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Employés</title>
      <link rel="stylesheet" href="../assets/css/bootstrap/css/bootstrap.min.css">
-
+  <!-- borw -->
 </head>
 <body>
 <script src="../assets/css/bootstrap/js/bootstrap.bundle.min.js"></script>
