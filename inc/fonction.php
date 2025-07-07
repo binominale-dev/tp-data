@@ -86,7 +86,7 @@ function count_employee_gender_title($gender) {
    $req = sprintf($req, $gender);
    $env = mysqli_query(db_connect(), $req);
    $res=mysqli_fetch_assoc($env);
-     $nb=$res['count(gender)'];
+     $nb=$res;
      return $nb;
 }
 
